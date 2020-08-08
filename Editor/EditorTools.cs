@@ -1,0 +1,91 @@
+﻿using System;
+using System.ComponentModel;
+using Sirenix.Utilities;
+using UnityEditor;
+using UnityEngine;
+
+namespace TheAshenWolfLib.Lib.Editor
+{
+    public static class EditorTools
+    {
+        public static void EditorTitle(string title, float titleSize = 2)
+        {
+            GUIStyle labelStyle = GUI.skin.GetStyle("Label");
+
+            labelStyle.alignment = TextAnchor.MiddleCenter;
+
+            int originalFontSize = labelStyle.fontSize;
+
+            labelStyle.fontSize = (int) (labelStyle.fontSize * titleSize);
+            labelStyle.fontStyle = FontStyle.Bold;
+
+            GUILayout.Label(title, labelStyle);
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+            labelStyle.alignment = TextAnchor.MiddleLeft;
+            labelStyle.fontSize = originalFontSize;
+            labelStyle.fontStyle = FontStyle.Normal;
+        }
+
+        public static void EditorSubTitle(string subtitle, RectOffset padding = null)
+        {
+            GUIStyle labelStyle = GUI.skin.GetStyle("Label");
+            GUIStyle horizontalSliderStyle = GUI.skin.horizontalSlider;
+
+            labelStyle.fontStyle = FontStyle.Bold;
+            labelStyle.padding = padding ?? new RectOffset(20, 20, 0, 0);
+            horizontalSliderStyle.padding = padding ?? new RectOffset(20, 20, 0, 0);
+
+            GUILayout.Label(subtitle, labelStyle);
+            HorizontalLine();
+            //EditorGUILayout.LabelField("", horizontalSliderStyle);
+            labelStyle.fontStyle = FontStyle.Normal;
+            labelStyle.padding = new RectOffset(0, 0, 0, 0);
+            horizontalSliderStyle.padding = new RectOffset(0, 0, 0, 0);
+        }
+
+
+        [Description("Creates a panel title with a toggle button.")]
+        public static bool ToggleableTitle(string title, bool panelOpen, float titleSize = 2)
+        {
+            GUIStyle labelStyle = GUI.skin.GetStyle("Label");
+
+            labelStyle.alignment = TextAnchor.MiddleCenter;
+
+            int originalFontSize = labelStyle.fontSize;
+
+            labelStyle.fontSize = (int) (labelStyle.fontSize * titleSize);
+            labelStyle.fontStyle = FontStyle.Bold;
+
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(title, labelStyle);
+            if (GUILayout.Button("Toggle", GUILayout.Width(80)))
+            {
+                panelOpen = !panelOpen;
+            }
+
+            GUILayout.EndHorizontal();
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+            labelStyle.alignment = TextAnchor.MiddleLeft;
+            labelStyle.fontSize = originalFontSize;
+            labelStyle.fontStyle = FontStyle.Normal;
+
+            return panelOpen;
+        }
+
+        public static void HorizontalLine(int thickness = 1, int xPadding = 20, int yPadding = 10)
+
+        {
+            Rect rect = EditorGUILayout.GetControlRect(false, thickness);
+
+            rect.height = thickness;
+            rect.width -= xPadding * 2;
+            rect.center = new Vector2(rect.center.x + xPadding, rect.center.y);
+            
+            EditorGUI.DrawRect(rect, new Color(0.5f, 0.5f, 0.5f, 1));
+            EditorGUILayout.Space(yPadding);
+        }
+    }
+}

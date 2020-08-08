@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using TheAshenWolfLib.Lib.Editor;
+using UnityEditor;
 using UnityEngine;
 
 namespace TheAshenWolf.Lib.Editor
@@ -10,12 +11,7 @@ namespace TheAshenWolf.Lib.Editor
             GUIStyle labelStyle = GUI.skin.GetStyle("Label");
             
             
-            labelStyle.alignment = TextAnchor.MiddleCenter;
-            GUILayout.Label("Required dependencies", labelStyle);
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            labelStyle.alignment = TextAnchor.MiddleLeft;
-            
-            
+            EditorTools.EditorTitle("Required dependencies", 1.25f);
             
             // Zenject
             GUILayout.BeginHorizontal();
@@ -36,10 +32,7 @@ namespace TheAshenWolf.Lib.Editor
             GUILayout.EndHorizontal();
             
             
-            labelStyle.alignment = TextAnchor.MiddleCenter;
-            GUILayout.Label("Optional dependencies", labelStyle);
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            //labelStyle.alignment = TextAnchor.MiddleLeft;
+            EditorTools.EditorTitle("Optional dependencies", 1.25f);
             
             GUILayout.Label("Currently Empty", labelStyle);
             
