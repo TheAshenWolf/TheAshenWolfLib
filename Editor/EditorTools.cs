@@ -33,7 +33,7 @@ namespace TheAshenWolfLib.Lib.Editor
             GUIStyle horizontalSliderStyle = GUI.skin.horizontalSlider;
 
             labelStyle.fontStyle = FontStyle.Bold;
-            labelStyle.padding = padding ?? new RectOffset(20, 20, 0, 0);
+            labelStyle.padding = padding ?? new RectOffset(20, 20, 10, 0);
             horizontalSliderStyle.padding = padding ?? new RectOffset(20, 20, 0, 0);
 
             GUILayout.Label(subtitle, labelStyle);
