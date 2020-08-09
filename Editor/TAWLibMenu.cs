@@ -100,7 +100,7 @@ namespace TheAshenWolf.Lib.Editor
             
             
             EditorWindow window = GetWindow<TAWCredits>();
-            Vector2 windowSize = new Vector2(300f, 200f);
+            Vector2 windowSize = new Vector2(300f, 120f);
             
             window.position = new Rect(Screen.width / 2f, Screen.height / 2f, windowSize.x, windowSize.y);
             window.maxSize = windowSize;
