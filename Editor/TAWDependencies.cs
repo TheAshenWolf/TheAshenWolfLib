@@ -33,9 +33,11 @@ namespace TheAshenWolf.Lib.Editor
             
             
             EditorTools.EditorTitle("Optional dependencies", 1.25f);
-            
+
+            labelStyle.alignment = TextAnchor.MiddleCenter;
             GUILayout.Label("Currently Empty", labelStyle);
-            
+            labelStyle.alignment = TextAnchor.MiddleLeft;
+
         }
         
         private static void AssetStoreZenject()
