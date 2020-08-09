@@ -1,7 +1,6 @@
 using System;
 
-namespace TheAshenWolfLib
-{
+namespace TheAshenWolf {
     [Serializable]
     public class Tree<T>
     {

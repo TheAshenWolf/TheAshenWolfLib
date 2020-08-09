@@ -4,8 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
-namespace TheAshenWolfLib
-{
+namespace TheAshenWolf {
     public static class RandomLoot
     {
         [Description("Generates either true or false depending on a percentual chance.")]
