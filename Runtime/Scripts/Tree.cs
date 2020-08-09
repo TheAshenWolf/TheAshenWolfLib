@@ -5,13 +5,13 @@ namespace TheAshenWolfLib
     [Serializable]
     public class Tree<T>
     {
-        public Tree(T data, Tree<T>[] options)
+        public Tree(T data, Tree<T>[] branches)
         {
-            Options = options;
+            Branches = branches;
             Data = data;
         }
 
         public T Data;
-        public Tree<T>[] Options;
+        public Tree<T>[] Branches;
     }
 }

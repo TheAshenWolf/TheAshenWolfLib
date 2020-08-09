@@ -46,21 +46,6 @@ namespace TheAshenWolfLib
             }
         }
         
-        // .text for gameobject (TMPro version)
-        public static void text(this GameObject gameObject, string text)
-        {
-            try
-            {
-                TextMeshProUGUI tmpro;
-                tmpro = gameObject.GetComponent<TextMeshProUGUI>();
-                tmpro.text = text;
-            }
-            catch
-            {
-                throw new MissingComponentException("GameObject " + gameObject.name +
-                                              " does not have TextMeshPro component.");
-            }
-        }
         
         // float map function
         public static float Map(this float value, float inputFrom, float inputTo, float outputFrom, float outputTo)
@@ -75,12 +60,12 @@ namespace TheAshenWolfLib
             return value.Map(input.Item1, input.Item2, output.Item1, output.Item2);
         }
         
-        public static List<int> ListOf(int a, int b)
+        public static List<int> ListOf(int from, int to)
         {
-            if (a > b || a == b) throw new ArgumentException("First element has to be lower than the second one");
+            if (from > to || from == to) throw new ArgumentException("First element has to be lower than the second one");
 
             List<int> result = new List<int>();
-            for (int i = a; i <= b; i++)
+            for (int i = from; i <= to; i++)
             {
                 result.Add(i);
             }
