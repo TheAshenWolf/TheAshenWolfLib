@@ -1,7 +1,7 @@
 ﻿﻿using System;
 using System.Collections.Generic;
 
-namespace TheAshenWolf.Lib.Editor
+namespace TheAshenWolf.Editor
 {
     [Serializable]
     public class DependencyJson

@@ -1,6 +1,6 @@
 ﻿﻿using System;
 
-namespace TheAshenWolf.Lib.Editor
+namespace TheAshenWolf.Editor
 {
     [Serializable]
     public class LockedPackage

@@ -1,0 +1,18 @@
+{
+    "name": "TheAshenWolf.Editor",
+    "references": [
+        "GUID:cb8b2ca69668454ba3531d43e119114c"
+        
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

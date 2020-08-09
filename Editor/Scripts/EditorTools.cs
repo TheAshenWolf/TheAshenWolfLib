@@ -1,10 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-using Sirenix.Utilities;
+﻿using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 
-namespace TheAshenWolfLib.Lib.Editor
+namespace TheAshenWolf.Editor
 {
     public static class EditorTools
     {

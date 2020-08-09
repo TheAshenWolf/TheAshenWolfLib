@@ -5,7 +5,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Formatting = Newtonsoft.Json.Formatting;
 
-namespace TheAshenWolf.Lib.Editor
+namespace TheAshenWolf.Editor
 {
     public class TAWLibMenu : EditorWindow
     {

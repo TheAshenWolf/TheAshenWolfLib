@@ -1,8 +1,7 @@
-﻿using TheAshenWolfLib.Lib.Editor;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace TheAshenWolf.Lib.Editor
+namespace TheAshenWolf.Editor
 {
     public class TAWDocumentation : EditorWindow
     {
