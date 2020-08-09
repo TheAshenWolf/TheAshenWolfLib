@@ -20,23 +20,42 @@ namespace TheAshenWolf.Editor
             string path = Path.Combine(Application.dataPath, "../Packages/manifest.json");
             string text = File.ReadAllText(path);
             DependencyJson obj = JsonConvert.DeserializeObject<DependencyJson>(text);
-
-            if (obj.@lock == null)
+            
+            if (obj.dependencies== null)
             {
-                EditorUtility.DisplayDialog("The Ashen Wolf Library", "No locked packages from github are in project.",
+                EditorUtility.DisplayDialog("The Ashen Wolf Library", "Manifest is empty.",
                     "Okay");
 
                 return;
             }
 
 
-            foreach (KeyValuePair<string, LockedPackage> keyValuePair in obj.@lock)
+            KeyValuePair<string, string> tawlib = new KeyValuePair<string, string>("", "");
+            foreach (KeyValuePair<string, string> keyValuePair in obj.dependencies)
             {
-                obj.@lock.Remove(keyValuePair.Key);
-                string manifest = JsonConvert.SerializeObject(obj, Formatting.Indented);
+                if (keyValuePair.Key == "com.theashenwolf.lib")
+                {
+                    obj.dependencies.Remove(keyValuePair.Key);
+                    string manifest = JsonConvert.SerializeObject(obj, Formatting.Indented);
+                                                              
+                    File.WriteAllText(path, manifest);
+                    AssetDatabase.Refresh();
 
-                File.WriteAllText(path, manifest);
+                    tawlib = new KeyValuePair<string, string>(keyValuePair.Key, keyValuePair.Value);
+                    break;
+                }
+                
+            }
+
+            if (tawlib.Key != "")
+            {
+                obj.dependencies.Add(tawlib.Key, tawlib.Value);
                 AssetDatabase.Refresh();
+            }
+            else
+            {
+                EditorUtility.DisplayDialog("The Ashen Wolf Library", "Library not found.",
+                                    "Okay");
             }
         }
 
