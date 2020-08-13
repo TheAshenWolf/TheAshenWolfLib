@@ -4,17 +4,18 @@ namespace TheAshenWolf
 {
     public class Noise2D
     {
-        public Noise2D(int sizeX, int sizeY, int seed? = null)
+        public Noise2D(int sizeX, int sizeY, int? seed = null)
         {
             Random r = new Random();
             Seed = seed ?? r.Next(Int32.MaxValue);
+            NoiseGenerator generator = new NoiseGenerator(Seed);
             
             this.Noise = new double[sizeX, sizeY];
-            for (int x = 0; x++; x < sizeX)
+            for (int x = 0; x < sizeX; x++)
             {
-                for (int y = 0; y++; y < sizeY)
+                for (int y = 0; y < sizeY; y++)
                 {
-                    this.Noise[x, y] = new NoiseGenerator(seed);
+                    this.Noise[x, y] = generator.Noise(x, y);
                 }
             }
         }
