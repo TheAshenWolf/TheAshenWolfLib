@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace TheAshenWolf
 {
     public class Noise2D
     {
+        [Description("Generates a Noise (2D field of doubles) and Seed.")]
         public Noise2D(int sizeX, int sizeY, int? seed = null)
         {
             Random r = new Random();

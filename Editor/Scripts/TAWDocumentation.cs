@@ -8,7 +8,7 @@ namespace TheAshenWolf.Editor
         private bool _randomLootPanelOpen = false;
         private bool _repetitiveStaticsPanelOpen = false;
         private bool _treePanelOpen = false;
-        private bool _editorToolPanelOpen = false;
+        private bool _noise2dPanelOpen = false;
         
         private Vector2 _scrollPosition;
 
@@ -155,6 +155,28 @@ namespace TheAshenWolf.Editor
                 }
                 EditorGUILayout.EndFadeGroup();
                 
+                
+                // Noise2D
+                _noise2dPanelOpen = EditorTools.ToggleableTitle("Noise2D", _noise2dPanelOpen, 1.5f);
+                if (EditorGUILayout.BeginFadeGroup(_noise2dPanelOpen ? 1 : 0))
+                {
+                    
+                    // constructor
+                    // todo: example
+                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Noise2D</color>(<color=blue>int</color> sizeX, <color=blue>int<T></color> sizeY, <color=blue>int</color>? seed = <color=blue>null</color>)");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>sizeX</b> - Size of the 2D field along X axis");
+                    GUILayout.Label("    <b>sizeY</b> - Size of the 2D field along Y axis");
+                    GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea("Noise2D noise = new Noise2D(10, 10); // Seed was not filled in, so it is generated randomly\n" +
+                                       "double[,] pattern = noise.Noise;\n" +
+                                       "int seed = noise.Seed;", textareaStyle);
+                    
+                    labelStyle.padding = noPadding;
+                }
+                EditorGUILayout.EndFadeGroup();
 
             GUILayout.EndScrollView();
         }
