@@ -3,7 +3,52 @@ using System.ComponentModel;
 
 namespace TheAshenWolf
 {
-    public class NoiseGenerator
+    public class Noise
+    {
+        public class Noise2D
+        {
+            [Description("Generates a Noise (2D field of doubles) and Seed.")]
+            public Noise2D(int sizeX, int sizeY, int? seed = null)
+            {
+                Random r = new Random();
+                Seed = seed ?? r.Next(Int32.MaxValue);
+                NoiseGenerator generator = new NoiseGenerator(Seed);
+
+                this.Noise = new double[sizeX, sizeY];
+                for (int x = 0; x < sizeX; x++)
+                {
+                    for (int y = 0; y < sizeY; y++)
+                    {
+                        this.Noise[x, y] = generator.Noise(x, y);
+                    }
+                }
+            }
+
+            public double[,] Noise { get; private set; }
+            public int Seed { get; private set; }
+        }
+        
+        public class Noise1D
+        {
+            [Description("Generates a Noise (array of doubles) and Seed.")]
+            public Noise1D(int size, int? seed = null)
+            {
+                Random r = new Random();
+                Seed = seed ?? r.Next(Int32.MaxValue);
+                NoiseGenerator generator = new NoiseGenerator(Seed);
+
+                this.Noise = new double[size];
+                for (int x = 0; x < size; x++)
+                {
+                    this.Noise[x] = generator.Noise(x, 0);
+                }
+            }
+
+            public double[] Noise { get; private set; }
+            public int Seed { get; private set; }
+        }
+        
+        public class NoiseGenerator
     {
         public int Seed { get; private set; }
 
@@ -44,7 +89,7 @@ namespace TheAshenWolf
             return (total / 2.4);
         }
 
-        public double NoiseGeneration(int x, int y)
+        private double NoiseGeneration(int x, int y)
         {
             int n = x + y * 57;
             n = (n << 13) ^ n;
@@ -70,5 +115,6 @@ namespace TheAshenWolf
 
             return Interpolate(i1, i2, y - (int) y);
         }
+    }
     }
 }

@@ -156,25 +156,42 @@ namespace TheAshenWolf.Editor
                 EditorGUILayout.EndFadeGroup();
                 
                 
-                // Noise2D
-                _noise2dPanelOpen = EditorTools.ToggleableTitle("Noise2D", _noise2dPanelOpen, 1.5f);
+                // Noise
+                _noise2dPanelOpen = EditorTools.ToggleableTitle("Noise", _noise2dPanelOpen, 1.5f);
                 if (EditorGUILayout.BeginFadeGroup(_noise2dPanelOpen ? 1 : 0))
                 {
                     
-                    // constructor
-                    // todo: example
-                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Noise2D</color>(<color=blue>int</color> sizeX, <color=blue>int<T></color> sizeY, <color=blue>int</color>? seed = <color=blue>null</color>)");
+                    // Noise1D
+                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Noise1D</color>(<color=blue>int</color> size, <color=blue>int</color>? seed = <color=blue>null</color>)");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>size</b> - Size of the output array");
+                    GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea("Noise.Noise1D myNoise = new Noise.Noise1D(10); // Seed was not filled in, so it is generated randomly\n" +
+                                       "double[] pattern = myNoise.Noise;\n" +
+                                       "int seed = myNoise.Seed;", textareaStyle);
+                    
+                    labelStyle.padding = noPadding;
+                    
+                    
+                    // Noise2D
+                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Noise2D</color>(<color=blue>int</color> sizeX, <color=blue>int</color> sizeY, <color=blue>int</color>? seed = <color=blue>null</color>)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>sizeX</b> - Size of the 2D field along X axis");
                     GUILayout.Label("    <b>sizeY</b> - Size of the 2D field along Y axis");
                     GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
-                    GUILayout.TextArea("Noise2D noise = new Noise2D(10, 10); // Seed was not filled in, so it is generated randomly\n" +
-                                       "double[,] pattern = noise.Noise;\n" +
-                                       "int seed = noise.Seed;", textareaStyle);
+                    GUILayout.TextArea("Noise.Noise2D myNoise = new Noise.Noise2D(10, 10); // Seed was not filled in, so it is generated randomly\n" +
+                                       "double[,] pattern = myNoise.Noise;\n" +
+                                       "int seed = myNoise.Seed;", textareaStyle);
                     
                     labelStyle.padding = noPadding;
+                    
+                    
+                    
+                    
                 }
                 EditorGUILayout.EndFadeGroup();
 
