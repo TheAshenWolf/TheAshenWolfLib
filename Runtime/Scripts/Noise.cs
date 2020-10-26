@@ -28,6 +28,32 @@ namespace TheAshenWolf
             public int Seed { get; private set; }
         }
         
+        public class Noise3D
+        {
+            [Description("Generates a Noise (2D field of doubles) and Seed.")]
+            public Noise3D(int sizeX, int sizeY, int sizeZ, int? seed = null)
+            {
+                Random r = new Random();
+                Seed = seed ?? r.Next(Int32.MaxValue);
+                NoiseGenerator generator = new NoiseGenerator(Seed);
+
+                this.Noise = new double[sizeX, sizeY, sizeZ];
+                for (int x = 0; x < sizeX; x++)
+                {
+                    for (int y = 0; y < sizeY; y++)
+                    {
+                        for (int z = 0; z < sizeZ; z++)
+                        {
+                            this.Noise[x, y, z] = (generator.Noise(x, y) + generator.Noise(z + Seed, x)) / 2;
+                        }
+                    }
+                }
+            }
+
+            public double[,,] Noise { get; private set; }
+            public int Seed { get; private set; }
+        }
+        
         public class Noise1D
         {
             [Description("Generates a Noise (array of doubles) and Seed.")]
