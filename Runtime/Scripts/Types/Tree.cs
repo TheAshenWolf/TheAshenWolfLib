@@ -1,6 +1,6 @@
 using System;
 
-namespace TheAshenWolf {
+namespace TheAshenWolf.Types {
     [Serializable]
     public class Tree<T>
     {
