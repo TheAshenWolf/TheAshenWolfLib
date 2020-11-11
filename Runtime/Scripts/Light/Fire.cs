@@ -6,7 +6,7 @@ namespace TheAshenWolf.Light
 {
     public class Fire : MonoBehaviour
     {
-        [SerializeField] private Light light;
+        [SerializeField] private UnityEngine.Light light;
 
         [SerializeField] private int minIntensity;
         [SerializeField] private int maxIntensity;
