@@ -8,7 +8,7 @@ namespace TheAshenWolf.Editor
         private bool _randomLootPanelOpen = false;
         private bool _repetitiveStaticsPanelOpen = false;
         private bool _treePanelOpen = false;
-        private bool _noise2dPanelOpen = false;
+        private bool _noisePanelOpen = false;
         
         private Vector2 _scrollPosition;
 
@@ -157,35 +157,48 @@ namespace TheAshenWolf.Editor
                 
                 
                 // Noise
-                _noise2dPanelOpen = EditorTools.ToggleableTitle("Noise", _noise2dPanelOpen, 1.5f);
-                if (EditorGUILayout.BeginFadeGroup(_noise2dPanelOpen ? 1 : 0))
+                _noisePanelOpen = EditorTools.ToggleableTitle("Noise", _noisePanelOpen, 1.5f);
+                if (EditorGUILayout.BeginFadeGroup(_noisePanelOpen ? 1 : 0))
                 {
                     
-                    // Noise1D
-                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Noise1D</color>(<color=blue>int</color> size, <color=blue>int</color>? seed = <color=blue>null</color>)");
+                    // Noise2D
+                    EditorTools.EditorSubTitle(
+                        "<color=blue>public static float</color> PerlinNoise2D(<color=blue>int</color> x, <color=blue>int</color> y, <color=blue>float</color> width, <color=blue>float</color> height, <color=blue>float</color> scale = 1, <color=blue>ulong</color>? seed = <color=blue>null</color>)");
                     labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>size</b> - Size of the output array");
+                    GUILayout.Label("    <b>x</b> - X coordinate of the point");
+                    GUILayout.Label("    <b>y</b> - Y coordinate of the point");
+                    GUILayout.Label("    <b>width</b> - max size along the X axis");
+                    GUILayout.Label("    <b>height</b> - max size along the Y axis");
+                    GUILayout.Label("    <b>scale</b> - scale of the perlin noise");
                     GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
-                    GUILayout.TextArea("Noise.Noise1D myNoise = new Noise.Noise1D(10); // Seed was not filled in, so it is generated randomly\n" +
-                                       "double[] pattern = myNoise.Noise;\n" +
-                                       "int seed = myNoise.Seed;", textareaStyle);
+                    GUILayout.TextArea(
+                        "float[,] generatedPoints = new float[width, height];\n" +
+                        "generatedPoints[x,y] = PerlinNoise2D(x, y, width, height, 5) // Seed was not filled in, so it is generated randomly\n"
+                                       , textareaStyle);
                     
                     labelStyle.padding = noPadding;
                     
                     
-                    // Noise2D
-                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Noise2D</color>(<color=blue>int</color> sizeX, <color=blue>int</color> sizeY, <color=blue>int</color>? seed = <color=blue>null</color>)");
+                    // Noise3D
+                    EditorTools.EditorSubTitle(
+                        "<color=blue>public static float</color> PerlinNoise3D(<color=blue>int</color> x, <color=blue>int</color> y, <color=blue>int</color> z, <color=blue>float</color> width, <color=blue>float</color> height, <color=blue>float</color> depth, <color=blue>float</color> scale = 1, <color=blue>ulong</color>? seed = null)");
                     labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>sizeX</b> - Size of the 2D field along X axis");
-                    GUILayout.Label("    <b>sizeY</b> - Size of the 2D field along Y axis");
+                    GUILayout.Label("    <b>x</b> - X coordinate of the point");
+                    GUILayout.Label("    <b>y</b> - Y coordinate of the point");
+                    GUILayout.Label("    <b>z</b> - Y coordinate of the point");
+                    GUILayout.Label("    <b>width</b> - max size along the X axis");
+                    GUILayout.Label("    <b>height</b> - max size along the Y axis");
+                    GUILayout.Label("    <b>depth</b> - max size along the Z axis");
+                    GUILayout.Label("    <b>scale</b> - scale of the perlin noise");
                     GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
-                    GUILayout.TextArea("Noise.Noise2D myNoise = new Noise.Noise2D(10, 10); // Seed was not filled in, so it is generated randomly\n" +
-                                       "double[,] pattern = myNoise.Noise;\n" +
-                                       "int seed = myNoise.Seed;", textareaStyle);
+                    GUILayout.TextArea(
+                        "float[,,] generatedPoints = new float[width, height, depth];\n" +
+                        "generatedPoints[x,y,z] = PerlinNoise2D(x, y, z, width, height, depth, 5) // Seed was not filled in, so it is generated randomly\n"
+                        , textareaStyle);
                     
                     labelStyle.padding = noPadding;
                     
