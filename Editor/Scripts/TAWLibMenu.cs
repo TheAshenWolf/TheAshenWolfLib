@@ -2,8 +2,6 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using Newtonsoft.Json;
-using Formatting = Newtonsoft.Json.Formatting;
 using UnityEditor.PackageManager;
 
 namespace TheAshenWolf.Editor
