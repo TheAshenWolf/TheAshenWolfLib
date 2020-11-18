@@ -122,7 +122,7 @@ namespace TheAshenWolf.Editor
 
                     
                     // ListOf
-                    EditorTools.EditorSubTitle("<color=blue>List<int></color> ListOf (<color=blue>int</color> from, <color=blue>int</color> to)");
+                    EditorTools.EditorSubTitle("<color=blue>List<int></color> ListOf(<color=blue>int</color> from, <color=blue>int</color> to)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>from</b> - Start of the list");
                     GUILayout.Label("    <b>to</b> - End of the list");
@@ -131,6 +131,24 @@ namespace TheAshenWolf.Editor
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("List<int> zeroToHundred = ListOf(0, 100);", textareaStyle);
+                    
+                    // GetSecondsFromEpoch
+                    EditorTools.EditorSubTitle("<color=blue>int<int></color> GetSecondsFromEpoch()");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>returns:</b> <color=blue>int</color> Amount of seconds since 1. January 1970");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea("int secondsSinceEpoch = GetSecondsFromEpoch()", textareaStyle);
+
+                    labelStyle.padding = noPadding;
+                    
+                    // GetSecondsFromEpoch
+                    EditorTools.EditorSubTitle("<color=blue>int<int></color> GetMillisecondsFromEpoch()");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>returns:</b> <color=blue>int</color> Amount of milliseconds since 1. January 1970");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea("int unixTime = GetMillisecondsFromEpoch()", textareaStyle);
 
                     labelStyle.padding = noPadding;
                 }

@@ -60,6 +60,7 @@ namespace TheAshenWolf
             return value.Map(input.Item1, input.Item2, output.Item1, output.Item2);
         }
         
+        // List of numbers
         public static List<int> ListOf(int from, int to)
         {
             if (from > to || from == to) throw new ArgumentException("First element has to be lower than the second one");
@@ -71,6 +72,19 @@ namespace TheAshenWolf
             }
 
             return result;
+        }
+
+        // Unix time
+        public static int GetSecondsFromEpoch()
+        {
+            DateTime epochStart = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return (int) (DateTime.UtcNow - epochStart).TotalSeconds;
+        }
+
+        public static int GetMillisecondsFromEpoch()
+        {
+            DateTime epochStart = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return (int) (DateTime.UtcNow - epochStart).TotalMilliseconds;
         }
     }
 }
