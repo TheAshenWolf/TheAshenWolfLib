@@ -15,7 +15,7 @@ namespace TheAshenWolf.Editor
             // Zenject
             GUILayout.BeginHorizontal();
             GUILayout.Label("Zenject", GUILayout.Width(200));
-            if (GUILayout.Button("Asset Store", GUILayout.Width(200)))
+            if (GUILayout.Button("Asset Store", GUILayout.Width(180)))
             {
                 AssetStoreZenject();   
             }
@@ -24,19 +24,11 @@ namespace TheAshenWolf.Editor
             // Newtonsoft JSON
             GUILayout.BeginHorizontal();
             GUILayout.Label("Newtonsoft JSON", GUILayout.Width(200));
-            if (GUILayout.Button("Asset Store", GUILayout.Width(200)))
+            if (GUILayout.Button("Asset Store", GUILayout.Width(180)))
             {
                 AssetStoreNewtonsoft();   
             }
             GUILayout.EndHorizontal();
-            
-            
-            EditorTools.EditorTitle("Optional dependencies", 1.25f);
-
-            labelStyle.alignment = TextAnchor.MiddleCenter;
-            GUILayout.Label("Currently Empty", labelStyle);
-            labelStyle.alignment = TextAnchor.MiddleLeft;
-
         }
         
         private static void AssetStoreZenject()
