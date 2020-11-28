@@ -79,19 +79,6 @@ namespace TheAshenWolf.Editor
                 _repetitiveStaticsPanelOpen = EditorTools.ToggleableTitle("RepetitiveStatics", _repetitiveStaticsPanelOpen, 1.5f);
                 if (EditorGUILayout.BeginFadeGroup(_repetitiveStaticsPanelOpen ? 1 : 0))
                 {
-                    // SetTextButton
-                    // todo: example
-                    EditorTools.EditorSubTitle("<color=blue>void</color> SetTextButton(<color=blue>Button</color> button, <color=blue>bool</color> isActive, <color=blue>float</color> activeAlpha = 1f, <color=blue>float</color> inactiveAlpha = .33f)");
-                    labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>button</b> - button element to use to create the text button");
-                    GUILayout.Label("    <b>isActive</b> - whether the button can be clicked or not");
-                    GUILayout.Label("    <b>activeAlpha</b> - alpha channel of the active button, default <i>1f</i>");
-                    GUILayout.Label("    <b>inactiveAlpha</b> - alpha channel of the inactive button, default <i>.33f</i>");
-                    GUILayout.Space(10);
-                    GUILayout.Label("<b>Example</b>");
-                    GUILayout.TextArea("\n Work in progress \n", textareaStyle);
-                    
-                    
                     // DestroyAllChildren
                     EditorTools.EditorSubTitle("<color=blue>void</color> DestroyAllChildren (<color=purple>this</color> <color=blue>Transform</color> transform)");
                     labelStyle.padding = subtitlePadding;
