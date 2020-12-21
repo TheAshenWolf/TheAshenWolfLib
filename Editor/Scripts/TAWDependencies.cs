@@ -20,7 +20,17 @@ namespace TheAshenWolf.Editor
                 AssetStoreZenject();   
             }
             GUILayout.EndHorizontal();
-           /* 
+           
+            GUILayout.Space(40);
+
+            labelStyle.alignment = TextAnchor.MiddleCenter;
+            
+            GUILayout.Label("You need to have HDRP or URP enabled in order to run");
+            GUILayout.Label("VFX and Shader packages.");
+
+            labelStyle.alignment = TextAnchor.MiddleLeft;
+
+            /* 
             // Newtonsoft JSON
             GUILayout.BeginHorizontal();
             GUILayout.Label("Newtonsoft JSON", GUILayout.Width(200));

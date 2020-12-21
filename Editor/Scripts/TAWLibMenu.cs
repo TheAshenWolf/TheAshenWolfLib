@@ -3,6 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.PackageManager;
+using UnityEngine.Rendering;
 
 namespace TheAshenWolf.Editor
 {
@@ -11,6 +12,7 @@ namespace TheAshenWolf.Editor
         private static bool _updateOnStartup = false;
         private static bool _useShaders = false;
         private static bool _useVfx = false;
+        public static bool hasRenderPipeline = false;
 
         // Add menu item named "My Window" to the Window menu
         private const string PATH_MANUAL_UPDATE = "Tools/TheAshenWolfLib/Update";
@@ -23,6 +25,7 @@ namespace TheAshenWolf.Editor
             {
                 Client.Add("https://github.com/Pozitrone/TheAshenWolfShaders.git");
             }
+
             if (EditorPrefs.GetBool(PATH_USE_VFX))
             {
                 Client.Add("https://github.com/Pozitrone/TheAshenWolfVFX.git");
@@ -51,12 +54,13 @@ namespace TheAshenWolf.Editor
 
 
         private const string PATH_DOCUMENTATION = "Tools/TheAshenWolfLib/Show Documentation";
+
         [MenuItem(PATH_DOCUMENTATION, false, 100)]
         private static void ShowDocumentation()
         {
             EditorWindow window = GetWindow<TAWDocumentation>();
             Vector2 windowSize = new Vector2(1000f, 800f);
-            
+
             window.position = new Rect(Screen.width / 2f, Screen.height / 2f, windowSize.x, windowSize.y);
             window.maxSize = windowSize;
             window.minSize = windowSize;
@@ -64,40 +68,38 @@ namespace TheAshenWolf.Editor
             window.Show();
         }
 
-        
-        
+
         private const string PATH_DEPENDENCIES = "Tools/TheAshenWolfLib/Display Dependencies";
+
         [MenuItem(PATH_DEPENDENCIES, false, 100)]
         private static void ShowDependencies()
         {
             EditorWindow window = GetWindow<TAWDependencies>();
             Vector2 windowSize = new Vector2(400f, 200f);
-            
+
             window.position = new Rect(Screen.width / 2f, Screen.height / 2f, windowSize.x, windowSize.y);
             window.maxSize = windowSize;
             window.minSize = windowSize;
             window.titleContent = new GUIContent("TAW Dependencies");
             window.Show();
         }
-        
-        
-        
+
+
         private const string PATH_CREDITS = "Tools/TheAshenWolfLib/Credits";
+
         [MenuItem(PATH_CREDITS, false, 200)]
         private static void ShowCredits()
         {
-            
-            
             EditorWindow window = GetWindow<TAWCredits>();
             Vector2 windowSize = new Vector2(300f, 120f);
-            
+
             window.position = new Rect(Screen.width / 2f, Screen.height / 2f, windowSize.x, windowSize.y);
             window.maxSize = windowSize;
             window.minSize = windowSize;
             window.titleContent = new GUIContent("TAW Credits");
             window.Show();
         }
-        
+
         public const string PATH_USE_VFX = "Tools/TheAshenWolfLib/TheAshenWolf VFX";
 
         [MenuItem(PATH_USE_VFX, false, 400)]
@@ -107,6 +109,12 @@ namespace TheAshenWolf.Editor
             ToogleUseVfx(!TawLibMenu._useVfx);
         }
         
+        [MenuItem(PATH_USE_VFX, true)]
+        private static bool CanRunVfx()
+        {
+            return hasRenderPipeline;
+        }
+
         private static void ToogleUseVfx(bool enabled)
         {
             // Set checkmark on menu item
@@ -125,7 +133,13 @@ namespace TheAshenWolf.Editor
             // Toggling action
             ToggleUseShaders(!TawLibMenu._useShaders);
         }
-        
+
+        [MenuItem(PATH_USE_SHADERS, true)]
+        private static bool CanRunShaders()
+        {
+            return hasRenderPipeline;
+        }
+
         private static void ToggleUseShaders(bool enabled)
         {
             // Set checkmark on menu item
@@ -147,6 +161,8 @@ namespace TheAshenWolf.Editor
             {
                 TawLibMenu.UpdatePackage();
             }
+            
+            TawLibMenu.hasRenderPipeline = (GraphicsSettings.renderPipelineAsset == null);
         }
     }
 }
