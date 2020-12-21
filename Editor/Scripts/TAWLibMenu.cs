@@ -6,42 +6,52 @@ using UnityEditor.PackageManager;
 
 namespace TheAshenWolf.Editor
 {
-    public class TAWLibMenu : EditorWindow
+    public class TawLibMenu : EditorWindow
     {
         private static bool _updateOnStartup = false;
+        private static bool _useShaders = false;
+        private static bool _useVfx = false;
 
         // Add menu item named "My Window" to the Window menu
-        private const string _pathManualUpdate = "Tools/TheAshenWolfLib/Update";
+        private const string PATH_MANUAL_UPDATE = "Tools/TheAshenWolfLib/Update";
 
-        [MenuItem(_pathManualUpdate, false, 0)]
+        [MenuItem(PATH_MANUAL_UPDATE, false, 0)]
         public static void UpdatePackage()
         {
             Client.Add("https://github.com/Pozitrone/TheAshenWolfLib.git");
+            if (EditorPrefs.GetBool(PATH_USE_SHADERS))
+            {
+                Client.Add("https://github.com/Pozitrone/TheAshenWolfShaders.git");
+            }
+            if (EditorPrefs.GetBool(PATH_USE_VFX))
+            {
+                Client.Add("https://github.com/Pozitrone/TheAshenWolfVFX.git");
+            }
         }
 
 
-        public const string pathAutoUpdate = "Tools/TheAshenWolfLib/Auto update on startup";
+        public const string PATH_AUTO_UPDATE = "Tools/TheAshenWolfLib/Auto update on startup";
 
-        [MenuItem(pathAutoUpdate, false, 0)]
+        [MenuItem(PATH_AUTO_UPDATE, false, 0)]
         private static void UpdateOnStartup()
         {
             // Toggling action
-            ToggleStartupUpdate(!TAWLibMenu._updateOnStartup);
+            ToggleStartupUpdate(!TawLibMenu._updateOnStartup);
         }
 
         private static void ToggleStartupUpdate(bool enabled)
         {
             // Set checkmark on menu item
-            Menu.SetChecked(pathAutoUpdate, enabled);
+            Menu.SetChecked(PATH_AUTO_UPDATE, enabled);
             // Saving editor state
-            EditorPrefs.SetBool(pathAutoUpdate, enabled);
+            EditorPrefs.SetBool(PATH_AUTO_UPDATE, enabled);
 
-            TAWLibMenu._updateOnStartup = enabled;
+            TawLibMenu._updateOnStartup = enabled;
         }
 
 
-        private const string _pathDocumentation = "Tools/TheAshenWolfLib/Show Documentation";
-        [MenuItem(_pathDocumentation, false, 100)]
+        private const string PATH_DOCUMENTATION = "Tools/TheAshenWolfLib/Show Documentation";
+        [MenuItem(PATH_DOCUMENTATION, false, 100)]
         private static void ShowDocumentation()
         {
             EditorWindow window = GetWindow<TAWDocumentation>();
@@ -56,8 +66,8 @@ namespace TheAshenWolf.Editor
 
         
         
-        private const string _pathDependencies = "Tools/TheAshenWolfLib/Display Dependencies";
-        [MenuItem(_pathDependencies, false, 100)]
+        private const string PATH_DEPENDENCIES = "Tools/TheAshenWolfLib/Display Dependencies";
+        [MenuItem(PATH_DEPENDENCIES, false, 100)]
         private static void ShowDependencies()
         {
             EditorWindow window = GetWindow<TAWDependencies>();
@@ -72,8 +82,8 @@ namespace TheAshenWolf.Editor
         
         
         
-        private const string _pathCredits = "Tools/TheAshenWolfLib/Credits";
-        [MenuItem(_pathCredits, false, 200)]
+        private const string PATH_CREDITS = "Tools/TheAshenWolfLib/Credits";
+        [MenuItem(PATH_CREDITS, false, 200)]
         private static void ShowCredits()
         {
             
@@ -87,6 +97,44 @@ namespace TheAshenWolf.Editor
             window.titleContent = new GUIContent("TAW Credits");
             window.Show();
         }
+        
+        public const string PATH_USE_VFX = "Tools/TheAshenWolfLib/TheAshenWolf VFX";
+
+        [MenuItem(PATH_USE_VFX, false, 400)]
+        private static void UseVfx()
+        {
+            // Toggling action
+            ToogleUseVfx(!TawLibMenu._useVfx);
+        }
+        
+        private static void ToogleUseVfx(bool enabled)
+        {
+            // Set checkmark on menu item
+            Menu.SetChecked(PATH_USE_VFX, enabled);
+            // Saving editor state
+            EditorPrefs.SetBool(PATH_USE_VFX, enabled);
+            if (enabled) Client.Add("https://github.com/Pozitrone/TheAshenWolfVFX.git");
+            TawLibMenu._useVfx = enabled;
+        }
+
+        private const string PATH_USE_SHADERS = "Tools/TheAshenWolfLib/TheAshenWolf Shaders";
+
+        [MenuItem(PATH_USE_SHADERS, false, 400)]
+        private static void UseShaders()
+        {
+            // Toggling action
+            ToggleUseShaders(!TawLibMenu._useShaders);
+        }
+        
+        private static void ToggleUseShaders(bool enabled)
+        {
+            // Set checkmark on menu item
+            Menu.SetChecked(PATH_USE_SHADERS, enabled);
+            // Saving editor state
+            EditorPrefs.SetBool(PATH_USE_SHADERS, enabled);
+            if (enabled) Client.Add("https://github.com/Pozitrone/TheAshenWolfShaders.git");
+            TawLibMenu._useShaders = enabled;
+        }
     }
 
     [InitializeOnLoad]
@@ -95,9 +143,9 @@ namespace TheAshenWolf.Editor
         static AutomaticUpdate()
         {
             // Automatic update
-            if (EditorPrefs.GetBool(TAWLibMenu.pathAutoUpdate))
+            if (EditorPrefs.GetBool(TawLibMenu.PATH_AUTO_UPDATE))
             {
-                TAWLibMenu.UpdatePackage();
+                TawLibMenu.UpdatePackage();
             }
         }
     }
