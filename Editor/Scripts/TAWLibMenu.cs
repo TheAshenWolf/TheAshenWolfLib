@@ -162,7 +162,7 @@ namespace TheAshenWolf.Editor
                 TawLibMenu.UpdatePackage();
             }
             
-            TawLibMenu.hasRenderPipeline = (GraphicsSettings.renderPipelineAsset == null);
+            TawLibMenu.hasRenderPipeline = (GraphicsSettings.renderPipelineAsset != null);
         }
     }
 }
