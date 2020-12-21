@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using OpenSimplex;
 using Random = UnityEngine.Random;
 
 namespace TheAshenWolf
 {
     public static class Noise
     {
+        private static OpenSimplexNoise _simplex = null;
         public static float PerlinNoise3D(int x, int y, int z, float width, float height, float depth, float scale = 1, ulong? seed = null)
         {
             if (seed == null) seed = GenerateTimeSeed();
@@ -40,6 +42,36 @@ namespace TheAshenWolf
             float point = Mathf.PerlinNoise(perlinX, perlinY);
 
             return point;
+        }
+
+        public static double SimplexNoise2D(double x, double y, ulong? seed = null)
+        {
+            if (_simplex == null)
+            {
+                _simplex = seed.HasValue ? new OpenSimplexNoise((long) seed.Value) : new OpenSimplexNoise();
+            }
+
+            return _simplex.Evaluate(x, y);
+        }
+        
+        public static double SimplexNoise3D(double x, double y, double z, double? seed = null)
+        {
+            if (_simplex == null)
+            {
+                _simplex = seed.HasValue ? new OpenSimplexNoise((long) seed.Value) : new OpenSimplexNoise();
+            }
+
+            return _simplex.Evaluate(x, y, z);
+        }
+        
+        public static double SimplexNoise4D(double x, double y, double z, double w, double? seed = null)
+        {
+            if (_simplex == null)
+            {
+                _simplex = seed.HasValue ? new OpenSimplexNoise((long) seed.Value) : new OpenSimplexNoise();
+            }
+
+            return _simplex.Evaluate(x, y, z, w);
         }
         
         private static ulong GenerateTimeSeed()

@@ -20,7 +20,7 @@ namespace TheAshenWolf.Editor
                 AssetStoreZenject();   
             }
             GUILayout.EndHorizontal();
-            
+           /* 
             // Newtonsoft JSON
             GUILayout.BeginHorizontal();
             GUILayout.Label("Newtonsoft JSON", GUILayout.Width(200));
@@ -28,7 +28,7 @@ namespace TheAshenWolf.Editor
             {
                 AssetStoreNewtonsoft();   
             }
-            GUILayout.EndHorizontal();
+            GUILayout.EndHorizontal();*/
         }
         
         private static void AssetStoreZenject()

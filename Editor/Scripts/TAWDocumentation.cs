@@ -31,11 +31,11 @@ namespace TheAshenWolf.Editor
                 if (EditorGUILayout.BeginFadeGroup(_randomLootPanelOpen ? 1 : 0))
                 {
                     // PercentageRoll
-                    EditorTools.EditorSubTitle("<color=blue>bool</color> PercentageRoll (<color=blue>float</color> percentage)");
+                    EditorTools.EditorSubTitle("<color=#8470db>bool</color> PercentageRoll (<color=#8470db>float</color> percentage)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>percentage</b> - Chance for the function to return true. (in percent)");
                     GUILayout.Space(10);
-                    GUILayout.Label("    <b>returns:</b> <color=blue>boolean</color> stating if you were lucky or not.");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>boolean</color> stating if you were lucky or not.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("if (PercentageRoll(10)) \n" +
@@ -45,11 +45,11 @@ namespace TheAshenWolf.Editor
                     
                     
                     // WeightedRoll
-                    EditorTools.EditorSubTitle("<color=blue>int</color> WeightedRoll (<color=blue>List<float></color> weights)");
+                    EditorTools.EditorSubTitle("<color=#8470db>int</color> WeightedRoll (<color=#8470db>List<float></color> weights)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>weights</b> - List of weights to choose from.");
                     GUILayout.Space(10);
-                    GUILayout.Label("    <b>returns:</b> <color=blue>int</color> marking the index of the chosen weight.");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>int</color> marking the index of the chosen weight.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("List<string> items = {\"Leather\", \"Bone\", \"Horn\"};\n" +
@@ -58,9 +58,9 @@ namespace TheAshenWolf.Editor
                     
                     
                     // RandomOfTwo
-                    EditorTools.EditorSubTitle("<color=blue>int</color> RandomOfTwo ()");
+                    EditorTools.EditorSubTitle("<color=#8470db>int</color> RandomOfTwo ()");
                     labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>returns:</b> <color=blue>int</color> zero or one, 50:50 chance");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>int</color> zero or one, 50:50 chance");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("List<string> items = {\"Leather\", \"Bone\"};\n\n" +
@@ -80,9 +80,9 @@ namespace TheAshenWolf.Editor
                 if (EditorGUILayout.BeginFadeGroup(_repetitiveStaticsPanelOpen ? 1 : 0))
                 {
                     // DestroyAllChildren
-                    EditorTools.EditorSubTitle("<color=blue>void</color> DestroyAllChildren (<color=purple>this</color> <color=blue>Transform</color> transform)");
+                    EditorTools.EditorSubTitle("<color=#8470db>void</color> DestroyAllChildren (<color=purple>this</color> <color=#8470db>Transform</color> transform)");
                     labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>transform</b> - <color=blue>Transform</color> of the element to destroy the children of.");
+                    GUILayout.Label("    <b>transform</b> - <color=#8470db>Transform</color> of the element to destroy the children of.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("// Let \"cube\" be a GameObject with several children.\n" +
@@ -92,7 +92,7 @@ namespace TheAshenWolf.Editor
                     
                     
                     // Map
-                    EditorTools.EditorSubTitle("<color=blue>float</color> Map(<color=purple>this</color> <color=blue>float</color> value, <color=blue>float</color> inputFrom, <color=blue>float</color> inputTo, <color=blue>float</color> outputFrom, <color=blue>float</color> outputTo)");
+                    EditorTools.EditorSubTitle("<color=#8470db>float</color> Map(<color=purple>this</color> <color=#8470db>float</color> value, <color=#8470db>float</color> inputFrom, <color=#8470db>float</color> inputTo, <color=#8470db>float</color> outputFrom, <color=#8470db>float</color> outputTo)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>value</b> - The value to be mapped");
                     GUILayout.Label("    <b>inputFrom</b> - start of the range input is from");
@@ -100,7 +100,7 @@ namespace TheAshenWolf.Editor
                     GUILayout.Label("    <b>outputFrom</b> - start of the range the value should be mapped on");
                     GUILayout.Label("    <b>outputTo</b> - end of the range the value should be mapped on");
                     GUILayout.Space(10);
-                    GUILayout.Label("    <b>returns:</b> <color=blue>float</color> value which is on the same position to the new range as the old value was to the old range.");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>float</color> value which is on the same position to the new range as the old value was to the old range.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("float value = 2648;\n" +
@@ -109,20 +109,20 @@ namespace TheAshenWolf.Editor
 
                     
                     // ListOf
-                    EditorTools.EditorSubTitle("<color=blue>List<int></color> ListOf(<color=blue>int</color> from, <color=blue>int</color> to)");
+                    EditorTools.EditorSubTitle("<color=#8470db>List<int></color> ListOf(<color=#8470db>int</color> from, <color=#8470db>int</color> to)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>from</b> - Start of the list");
                     GUILayout.Label("    <b>to</b> - End of the list");
                     GUILayout.Space(10);
-                    GUILayout.Label("    <b>returns:</b> <color=blue>List<int></color> starting at <i>from</i> ending at <i>to</i> going up by one every place.");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>List<int></color> starting at <i>from</i> ending at <i>to</i> going up by one every place.");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("List<int> zeroToHundred = ListOf(0, 100);", textareaStyle);
                     
                     // GetSecondsFromEpoch
-                    EditorTools.EditorSubTitle("<color=blue>int<int></color> GetSecondsFromEpoch()");
+                    EditorTools.EditorSubTitle("<color=#8470db>int<int></color> GetSecondsFromEpoch()");
                     labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>returns:</b> <color=blue>int</color> Amount of seconds since 1. January 1970");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>int</color> Amount of seconds since 1. January 1970");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("int secondsSinceEpoch = GetSecondsFromEpoch()", textareaStyle);
@@ -130,9 +130,9 @@ namespace TheAshenWolf.Editor
                     labelStyle.padding = noPadding;
                     
                     // GetSecondsFromEpoch
-                    EditorTools.EditorSubTitle("<color=blue>int<int></color> GetMillisecondsFromEpoch()");
+                    EditorTools.EditorSubTitle("<color=#8470db>int<int></color> GetMillisecondsFromEpoch()");
                     labelStyle.padding = subtitlePadding;
-                    GUILayout.Label("    <b>returns:</b> <color=blue>int</color> Amount of milliseconds since 1. January 1970");
+                    GUILayout.Label("    <b>returns:</b> <color=#8470db>int</color> Amount of milliseconds since 1. January 1970");
                     GUILayout.Space(10);
                     GUILayout.Label("<b>Example</b>");
                     GUILayout.TextArea("int unixTime = GetMillisecondsFromEpoch()", textareaStyle);
@@ -148,7 +148,7 @@ namespace TheAshenWolf.Editor
                     
                     // constructor
                     // todo: example
-                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=blue>Tree</color>(<color=blue>T</color> data, <color=blue>Tree<T></color>[] options)");
+                    EditorTools.EditorSubTitle("<color=purple>(constructor)</color> <color=#8470db>Tree</color>(<color=#8470db>T</color> data, <color=#8470db>Tree<T></color>[] options)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>data</b> - Information stored in particular node");
                     GUILayout.Label("    <b>branches</b> - Another trees.");
@@ -168,7 +168,7 @@ namespace TheAshenWolf.Editor
                     
                     // Noise2D
                     EditorTools.EditorSubTitle(
-                        "<color=blue>public static float</color> PerlinNoise2D(<color=blue>int</color> x, <color=blue>int</color> y, <color=blue>float</color> width, <color=blue>float</color> height, <color=blue>float</color> scale = 1, <color=blue>ulong</color>? seed = <color=blue>null</color>)");
+                        "<color=#8470db>public static float</color> PerlinNoise2D(<color=#8470db>int</color> x, <color=#8470db>int</color> y, <color=#8470db>float</color> width, <color=#8470db>float</color> height, <color=#8470db>float</color> scale = 1, <color=#8470db>ulong</color>? seed = <color=#8470db>null</color>)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>x</b> - X coordinate of the point");
                     GUILayout.Label("    <b>y</b> - Y coordinate of the point");
@@ -188,7 +188,7 @@ namespace TheAshenWolf.Editor
                     
                     // Noise3D
                     EditorTools.EditorSubTitle(
-                        "<color=blue>public static float</color> PerlinNoise3D(<color=blue>int</color> x, <color=blue>int</color> y, <color=blue>int</color> z, <color=blue>float</color> width, <color=blue>float</color> height, <color=blue>float</color> depth, <color=blue>float</color> scale = 1, <color=blue>ulong</color>? seed = null)");
+                        "<color=#8470db>public static float</color> PerlinNoise3D(<color=#8470db>int</color> x, <color=#8470db>int</color> y, <color=#8470db>int</color> z, <color=#8470db>float</color> width, <color=#8470db>float</color> height, <color=#8470db>float</color> depth, <color=#8470db>float</color> scale = 1, <color=#8470db>ulong</color>? seed = null)");
                     labelStyle.padding = subtitlePadding;
                     GUILayout.Label("    <b>x</b> - X coordinate of the point");
                     GUILayout.Label("    <b>y</b> - Y coordinate of the point");
@@ -207,9 +207,57 @@ namespace TheAshenWolf.Editor
                     
                     labelStyle.padding = noPadding;
                     
+                    // Simplex2D
+                    EditorTools.EditorSubTitle(
+                        "<color=#8470db>public static double</color> SimplexNoise2D(<color=#8470db>double</color> x, <color=#8470db>double</color> y, <color=#8470db>ulong</color>? seed = <color=#8470db>null</color>)");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>x</b> - X coordinate of the point");
+                    GUILayout.Label("    <b>y</b> - Y coordinate of the point");
+                    GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea(
+                        "double[,] generatedPoints = new double[width, height];\n" +
+                        "generatedPoints[x,y] = SimplexNoise2D(x, y) // Seed was not filled in, so it is generated randomly\n"
+                        , textareaStyle);
+                    
+                    labelStyle.padding = noPadding;
+                    
+                    // Simplex3D
+                    EditorTools.EditorSubTitle(
+                        "<color=#8470db>public static double</color> SimplexNoise3D(<color=#8470db>double</color> x, <color=#8470db>double</color> y, <color=#8470db>double</color> z, <color=#8470db>ulong</color>? seed = <color=#8470db>null</color>)");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>x</b> - X coordinate of the point");
+                    GUILayout.Label("    <b>y</b> - Y coordinate of the point");
+                    GUILayout.Label("    <b>z</b> - Z coordinate of the point");
+                    GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea(
+                        "double[,,] generatedPoints = new double[width, height, depth];\n" +
+                        "generatedPoints[x,y,z] = SimplexNoise2D(x, y, z) // Seed was not filled in, so it is generated randomly\n"
+                        , textareaStyle);
+                    
+                    labelStyle.padding = noPadding;
                     
                     
+                    // Simplex4D
+                    EditorTools.EditorSubTitle(
+                        "<color=#8470db>public static double</color> SimplexNoise4D(<color=#8470db>double</color> x, <color=#8470db>double</color> y, <color=#8470db>double</color> z, <color=#8470db>double</color> w, <color=#8470db>ulong</color>? seed = <color=#8470db>null</color>)");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("    <b>x</b> - X coordinate of the point");
+                    GUILayout.Label("    <b>y</b> - Y coordinate of the point");
+                    GUILayout.Label("    <b>z</b> - Z coordinate of the point");
+                    GUILayout.Label("    <b>w</b> - W coordinate of the point");
+                    GUILayout.Label("    <b>seed</b> - Seed used to generate the noise. Leave blank for random.");
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea(
+                        "double[,,,] generatedPoints = new double[width, height, depth, fourth];\n" +
+                        "generatedPoints[x,y,z,w] = SimplexNoise2D(x, y, z, w) // Seed was not filled in, so it is generated randomly\n"
+                        , textareaStyle);
                     
+                    labelStyle.padding = noPadding;
                 }
                 EditorGUILayout.EndFadeGroup();
 

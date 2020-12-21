@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 // ReSharper disable once CheckNamespace
 namespace TheAshenWolf.WorldGen
@@ -26,12 +24,11 @@ namespace TheAshenWolf.WorldGen
         private readonly float[,,] perlinPoints = new float[CHUNK_SIZE + 1, HEIGHT + 1, CHUNK_SIZE + 1];
 
         // Serialized
-        [Title("General Settings")]
+        [Header("General Settings")]
         [SerializeField] private Transform chunkHolder;
         [SerializeField] private Material cubeMaterial;
         [SerializeField, Range(0,1), Tooltip("0 = solid ground, 1 = empty space")] private float noiseThreshold = 0.4f;
-
-
+        
 
         // Public
         public List<Chunk> chunks = new List<Chunk>();
