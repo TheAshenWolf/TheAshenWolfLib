@@ -1,6 +1,6 @@
 {
   "name": "com.theashenwolf.lib",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "displayName": "The Ashen Wolf Library",
   "description": "Some really useful random functions",
   "dependencies": {   
