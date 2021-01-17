@@ -43,10 +43,26 @@ namespace TheAshenWolf
                 throw new ArgumentException("Range can not be a single number.");
             return outputFrom + (value - inputFrom) * (outputTo - outputFrom) / (inputTo - inputFrom);
         }
+        
+        public static double Map(this double value, double inputFrom, double inputTo, double outputFrom, double outputTo)
+        {
+            if ((Math.Abs(inputFrom - inputTo) < 0.00001) || (Math.Abs(outputFrom - outputTo) < 0.00001))
+                throw new ArgumentException("Range can not be a single number.");
+            return outputFrom + (value - inputFrom) * (outputTo - outputFrom) / (inputTo - inputFrom);
+        }
 
         public static float Map(this float value, (float, float) input, (float, float) output)
         {
-            return value.Map(input.Item1, input.Item2, output.Item1, output.Item2);
+            (float in1, float in2) = input;
+            (float out1, float out2) = output;
+            return value.Map(in1, in2, out1, out2);
+        }
+        
+        public static double Map(this double value, (double, double) input, (double, double) output)
+        {
+            (double in1, double in2) = input;
+            (double out1, double out2) = output;
+            return value.Map(in1, in2, out1, out2);
         }
 
         // List of numbers

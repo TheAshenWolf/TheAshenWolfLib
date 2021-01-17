@@ -44,7 +44,7 @@ namespace TheAshenWolf {
         [Description("Returns either zero or one")]
         public static int RandomOfTwo()
         {
-            return UnityEngine.Random.Range(0, 1);
+            return UnityEngine.Random.Range(0, 100) < 50 ? 0 : 1;
         }
     }
 
