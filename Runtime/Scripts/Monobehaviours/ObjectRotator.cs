@@ -9,6 +9,7 @@ namespace TheAshenWolf.Monobehaviours
         [Header("General Settings")]
         [SerializeField] private bool multiplyByDeltaTime;
         [SerializeField] private float rotationSpeed = 1;
+        [SerializeField, Tooltip("Rotates around pivot if disabled.")] private bool rotateAroundCenter;
 
         [Header("Movement Weights"), Tooltip("Movement speed gets multiplied by these values per axis.")]
         [Range(-1, 1), SerializeField] private float rotationWeightXAxis;
@@ -20,6 +21,13 @@ namespace TheAshenWolf.Monobehaviours
         [SerializeField] private bool lockYAxis;
         [SerializeField] private bool lockZAxis;
 
+        private Vector3 _center;
+
+        private void Start()
+        {
+            _center = transform.TransformPoint(GetComponent<MeshFilter>().mesh.bounds.center);
+        }
+        
         private void Update()
         {
             if (!rotationEnabled) return;
@@ -33,8 +41,15 @@ namespace TheAshenWolf.Monobehaviours
             rotation *= rotationSpeed;
 
             if (multiplyByDeltaTime) rotation *= Time.deltaTime;
-            
-            transform.Rotate(rotation);
+
+            if (rotateAroundCenter)
+            {
+                transform.RotateAround(_center, rotation.normalized, multiplyByDeltaTime ? rotationSpeed * Time.deltaTime : rotationSpeed);
+            }
+            else
+            {
+                transform.Rotate(rotation);
+            }
         }
     }
 }
