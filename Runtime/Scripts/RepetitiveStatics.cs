@@ -18,8 +18,7 @@ namespace TheAshenWolf
             }
         }
 
-        [Description(
-            "Destroys all child GameObjects. Overload, that takes in a gameObject and gets the transform itself.")]
+        [Description("Destroys all child GameObjects. Overload, that takes in a gameObject and gets the transform itself.")]
         public static void DestroyAllChildren(this GameObject gameObject)
         {
             Transform transform = gameObject.transform;
@@ -32,6 +31,25 @@ namespace TheAshenWolf
             foreach (Transform child in transform)
             {
                 if (child != transform) GameObject.Destroy(child.gameObject);
+            }
+        }
+        
+        [Description("Destroys all child GameObjects except the protected child")]
+        public static void DestroyAllChildrenExcept(this Transform transform, Transform protectedChild)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child != transform && child != protectedChild) GameObject.Destroy(child.gameObject);
+            }
+        }
+        
+
+        [Description("Destroys all child GameObjects except the protected children")]
+        public static void DestroyAllChildrenExcept(this Transform transform, List<Transform> protectedChildren)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child != transform && !protectedChildren.Contains(child)) GameObject.Destroy(child.gameObject);
             }
         }
 

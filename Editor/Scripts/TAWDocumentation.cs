@@ -5,11 +5,11 @@ namespace TheAshenWolf.Editor
 {
   public class TAWDocumentation : EditorWindow
   {
-    private bool _randomLootPanelOpen = false;
-    private bool _repetitiveStaticsPanelOpen = false;
-    private bool _treePanelOpen = false;
-    private bool _noisePanelOpen = false;
-    private bool _monobehavioursPanelOpen = false;
+    private bool _randomLootPanelOpen;
+    private bool _repetitiveStaticsPanelOpen;
+    private bool _treePanelOpen;
+    private bool _noisePanelOpen;
+    private bool _monobehavioursPanelOpen;
 
     private Vector2 _scrollPosition;
 
@@ -90,7 +90,42 @@ namespace TheAshenWolf.Editor
                            "Transform cubeTransform = cube.transform;\n" +
                            "\n" +
                            "cubeTransform.DestroyAllChildren();", textareaStyle);
-
+        
+        // DestroyAllChildren
+        EditorTools.EditorSubTitle("(overload) void DestroyAllChildren (this GameObject gameObject)".ApplyCodeHighlighting());
+        labelStyle.padding = subtitlePadding;
+        EditorTools.CreateParam("gameObject", "GameObject to destroy the children of.");
+        GUILayout.Space(10);
+        GUILayout.Label("<b>Example</b>");
+        GUILayout.TextArea("// Let \"cube\" be a GameObject with several children.\n" +
+                           "\n" +
+                           "cube.DestroyAllChildren();", textareaStyle);
+        
+        // DestroyAllChildrenExcept
+        EditorTools.EditorSubTitle("void DestroyAllChildrenExcept (this Transform transform, Transform protectedChild)".ApplyCodeHighlighting());
+        labelStyle.padding = subtitlePadding;
+        EditorTools.CreateParam("transform", "GameObject to destroy the children of.");
+        EditorTools.CreateParam("protectedChild", "Child that will be skipped");
+        GUILayout.Space(10);
+        GUILayout.Label("<b>Example</b>");
+        GUILayout.TextArea("// Let \"cube\" be a GameObject with several children. \"sphere\" is a child we want to keep.\n" +
+                           "Transform cubeTransform = cube.transform;\n" +
+                           "Transform sphereTransform = sphere.transform;\n" +
+                           "\n" +
+                           "cubeTransform.DestroyAllChildrenExcept(sphereTransform);", textareaStyle);
+        
+        
+        // DestroyAllChildrenExcept
+        EditorTools.EditorSubTitle("(overload) void DestroyAllChildrenExcept (this Transform transform, List<Transform> protectedChildren)".ApplyCodeHighlighting());
+        labelStyle.padding = subtitlePadding;
+        EditorTools.CreateParam("transform", "GameObject to destroy the children of.");
+        EditorTools.CreateParam("protectedChildren", "Children that will be skipped.");
+        GUILayout.Space(10);
+        GUILayout.Label("<b>Example</b>");
+        GUILayout.TextArea("// Let \"cube\" be a GameObject with several children. \"sphereTransforms\" is a list of several of the children.\n" +
+                           "Transform cubeTransform = cube.transform;\n" +
+                           "\n" +
+                           "cubeTransform.DestroyAllChildrenExcept(sphereTransforms);", textareaStyle);
 
         // Map
         EditorTools.EditorSubTitle(

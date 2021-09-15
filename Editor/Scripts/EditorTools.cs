@@ -16,7 +16,7 @@ namespace TheAshenWolf.Editor
     
     private static string[] HightlightedWords =
     {
-      "this", "constructor"
+      "this", "constructor", "overload"
     };
 
 
