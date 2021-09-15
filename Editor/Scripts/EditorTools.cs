@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +10,13 @@ namespace TheAshenWolf.Editor
     private static string[] ReservedWords =
     {
       "private", "protected", "public", "virtual", "override", "static",
-      "bool", "int", "float", "double", "string", "void", "operator", "null"
+      "bool", "int", "float", "double", "string", "void", "operator", "null", "ulong",
+      "List", "Transform", "T"
+    };
+    
+    private static string[] HightlightedWords =
+    {
+      "this", "constructor"
     };
 
 
@@ -97,7 +104,12 @@ namespace TheAshenWolf.Editor
     {
       foreach (string word in ReservedWords)
       {
-        source = source.Replace(word, "<color=#8470db>" + word + "</color>");
+        source = Regex.Replace(source, word + "([^a-zA-Z])", "<color=#8470db>" + word + "</color>$1");
+      }
+      
+      foreach (string word in HightlightedWords)
+      {
+        source = Regex.Replace(source, word + "([^a-zA-Z])", "<color=purple>" + word + "</color>$1");
       }
       return source;
     }
