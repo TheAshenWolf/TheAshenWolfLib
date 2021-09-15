@@ -9,6 +9,8 @@ namespace TheAshenWolf.Editor
         private bool _repetitiveStaticsPanelOpen = false;
         private bool _treePanelOpen = false;
         private bool _noisePanelOpen = false;
+        private bool _monobehavioursPanelOpen = false;
+        private bool _saveSystemPanelOpen = false;
         
         private Vector2 _scrollPosition;
 
@@ -255,6 +257,52 @@ namespace TheAshenWolf.Editor
                     GUILayout.TextArea(
                         "double[,,,] generatedPoints = new double[width, height, depth, fourth];\n" +
                         "generatedPoints[x,y,z,w] = SimplexNoise2D(x, y, z, w) // Seed was not filled in, so it is generated randomly\n"
+                        , textareaStyle);
+                    
+                    labelStyle.padding = noPadding;
+                }
+                EditorGUILayout.EndFadeGroup();
+                
+                
+                
+                
+                // Monobehaviours
+                _monobehavioursPanelOpen = EditorTools.ToggleableTitle("Monobehaviours", _monobehavioursPanelOpen, 1.5f);
+                if (EditorGUILayout.BeginFadeGroup(_monobehavioursPanelOpen ? 1 : 0))
+                {
+                    // Object Rotator
+                    EditorTools.EditorSubTitle("<b>Object Rotator</b>");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("Attach to a GameObject and set up within the editor. Used to rotate objects.");
+                    GUILayout.Space(20);
+
+                    // Object Pusher
+                    EditorTools.EditorSubTitle("<b>Object Pusher</b>");
+                    labelStyle.padding = subtitlePadding;
+                    GUILayout.Label("Attach to a GameObject and set up within the editor. Used to move objects.");
+                    GUILayout.Space(20);
+                    
+                    labelStyle.padding = noPadding;
+                }
+                EditorGUILayout.EndFadeGroup();
+                
+                
+                
+                
+                // SaveSystem
+                _saveSystemPanelOpen = EditorTools.ToggleableTitle("Save System", _saveSystemPanelOpen, 1.5f);
+                if (EditorGUILayout.BeginFadeGroup(_saveSystemPanelOpen ? 1 : 0))
+                {
+                    // Simplex4D
+                    EditorTools.EditorSubTitle(
+                        "public static void SaveBoolean(string name, bool value)".ApplyCodeHighlighting());
+                    labelStyle.padding = subtitlePadding;
+                    EditorTools.CreateParam("param", "my param");
+                    
+                    GUILayout.Space(10);
+                    GUILayout.Label("<b>Example</b>");
+                    GUILayout.TextArea(
+                        "example"
                         , textareaStyle);
                     
                     labelStyle.padding = noPadding;
