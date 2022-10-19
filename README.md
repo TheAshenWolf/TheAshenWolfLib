@@ -6,7 +6,7 @@ Unity library of custom functions to use in general apps, games and more!
 
 ## Installation
 
-**Git url:** https://github.com/Pozitrone/TheAshenWolfLib.git
+**Git url:** https://github.com/TheAshenWolf/TheAshenWolfLib.git
 
 1. Open package manager and click "Add from git URL"
 ![Installation 1](./images/installation1.png)
