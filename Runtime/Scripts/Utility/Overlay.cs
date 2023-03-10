@@ -1,13 +1,10 @@
-using System;
+﻿using System;
 using UnityEngine;
 using static TheAshenWolfLib.Runtime.Scripts.Utility.Dlls;
 
 namespace TheAshenWolfLib.Runtime.Scripts.Utility
 {
-  /// <summary>
-  /// Used to make the game window transparent
-  /// </summary>
-  public class TransparentWindow : MonoBehaviour
+  public class Overlay : MonoBehaviour
   {
 #if !UNITY_EDITOR
     /// <summary>
@@ -20,7 +17,8 @@ namespace TheAshenWolfLib.Runtime.Scripts.Utility
       MARGINS margins = new MARGINS { cxLeftWidth = -1, cxRightWidth = -1, cyTopHeight = -1, cyBottomHeight = -1 };
       DwmExtendFrameIntoClientArea(hWnd, ref margins);
       
-      SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_TRANSPARENT);
+      SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
+      SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, 0);
     }
 #endif
   }
