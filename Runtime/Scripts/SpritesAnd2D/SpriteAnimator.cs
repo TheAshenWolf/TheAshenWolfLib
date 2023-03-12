@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheAshenWolfLib.Runtime.Scripts.SpritesAnd2D
@@ -15,8 +16,16 @@ namespace TheAshenWolfLib.Runtime.Scripts.SpritesAnd2D
     private int _fps;
     private int _currentFrame;
     private bool _playOnce;
-    private List<Sprite> _defaultFrames;
-    private int _defaultFps;
+    [SerializeField] private List<Sprite> _defaultFrames;
+    [SerializeField] private int _defaultFps;
+
+    private void Start()
+    {
+      if (_defaultFps != 0 && _defaultFrames != null && _defaultFrames.Count > 0)
+      {
+        PlayDefault();
+      }
+    }
 
     /// <summary>
     /// Starts the animation
