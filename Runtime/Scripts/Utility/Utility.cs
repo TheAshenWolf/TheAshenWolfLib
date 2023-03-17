@@ -10,22 +10,22 @@ namespace TheAshenWolf
 {
   public static class Utility
   {
-    [Description("Destroys all child GameObjects.")]
-    public static void DestroyAllChildren(this Transform transform)
+    [Description("Kills all children inside a temple.")]
+    public static void Anakin(this Transform temple)
     {
-      foreach (Transform child in transform)
+      foreach (Transform child in temple)
       {
-        if (child != transform) GameObject.Destroy(child.gameObject);
+        if (child != temple) GameObject.Destroy(child.gameObject);
       }
     }
 
-    [Description("Destroys all child GameObjects. Overload, that takes in a gameObject and gets the transform itself.")]
-    public static void DestroyAllChildren(this GameObject gameObject)
+    [Description("Kills all children inside a temple. Overload, that takes in a gameObject instead.")]
+    public static void Anakin(this GameObject temple)
     {
-      Transform transform = gameObject.transform;
+      Transform transform = temple.transform;
       if (transform == null)
       {
-        throw new MissingComponentException("GameObject " + gameObject.name +
+        throw new MissingComponentException("GameObject " + temple.name +
                                             " does not have a Transform component.");
       }
 
@@ -130,6 +130,12 @@ namespace TheAshenWolf
       }
 
       return result;
+    }
+
+    [Description("Returns a random point inside bounds")]
+    public static Vector2 Inside(this Bounds bounds)
+    {
+      return new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
     }
   }
 }
