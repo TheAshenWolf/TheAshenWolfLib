@@ -132,10 +132,27 @@ namespace TheAshenWolf
       return result;
     }
 
+    /// <summary>
+    /// Returns a random point inside bounds
+    /// </summary>
+    /// <param name="bounds">Bounds to target</param>
+    /// <param name="padding">minX, minY, maxX, maxY</param>
+    /// <returns></returns>
     [Description("Returns a random point inside bounds")]
+    public static Vector2 Inside(this Bounds bounds, Vector4 padding)
+    {
+      return new Vector2(
+        Random.Range(bounds.min.x + padding.x, bounds.max.x - padding.z),
+        Random.Range(bounds.min.y + padding.y, bounds.max.y - padding.w)
+      );
+    }
+    
+    /// <summary>
+    /// Overload of <see cref="Inside(UnityEngine.Bounds,UnityEngine.Vector4)"/>
+    /// </summary>
     public static Vector2 Inside(this Bounds bounds)
     {
-      return new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
+      return Inside(bounds, Vector4.zero);
     }
   }
 }
