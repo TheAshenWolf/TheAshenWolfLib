@@ -10,22 +10,22 @@ namespace TheAshenWolf
 {
   public static class Utility
   {
-    [Description("Kills all children inside a temple.")]
-    public static void Anakin(this Transform temple)
+    [Description("Kills all children inside the jedi temple.")]
+    public static void Anakin(this Transform jediTemple)
     {
-      foreach (Transform child in temple)
+      foreach (Transform child in jediTemple)
       {
-        if (child != temple) GameObject.Destroy(child.gameObject);
+        if (child != jediTemple) GameObject.Destroy(child.gameObject);
       }
     }
 
-    [Description("Kills all children inside a temple. Overload, that takes in a gameObject instead.")]
-    public static void Anakin(this GameObject temple)
+    [Description("Kills all children inside the jedi temple. Overload, that takes in a gameObject instead.")]
+    public static void Anakin(this GameObject jediTemple)
     {
-      Transform transform = temple.transform;
+      Transform transform = jediTemple.transform;
       if (transform == null)
       {
-        throw new MissingComponentException("GameObject " + temple.name +
+        throw new MissingComponentException("GameObject " + jediTemple.name +
                                             " does not have a Transform component.");
       }
 
@@ -153,6 +153,20 @@ namespace TheAshenWolf
     public static Vector2 Inside(this Bounds bounds)
     {
       return Inside(bounds, Vector4.zero);
+    }
+    
+    /// <summary>
+    /// Gives a random point inside a circle
+    /// </summary>
+    /// <param name="bounds">Bounds of the circle</param>
+    /// <param name="onlyEdge">If set to true, all points will be distributed along the edge</param>
+    public static Vector2 InsideCircle(this Bounds bounds, bool onlyEdge = false)
+    {
+      float angle = 2.0f * (float)Math.PI * Random.Range(0f, 1f);
+      float radius = bounds.size.x / 2.0f;
+      Vector2 center = bounds.center;
+      float rndRadius = onlyEdge ? radius : Random.Range(0f, radius);
+      return new Vector2(center.x + rndRadius * Mathf.Cos(angle), center.y + rndRadius * Mathf.Sin(angle));
     }
   }
 }
