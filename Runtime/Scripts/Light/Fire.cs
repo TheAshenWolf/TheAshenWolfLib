@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TheAshenWolf.Light
 {
     public class Fire : MonoBehaviour
     {
-        [SerializeField] private UnityEngine.Light light;
+        [SerializeField] private new UnityEngine.Light light;
 
         [SerializeField] private int minIntensity;
         [SerializeField] private int maxIntensity;
