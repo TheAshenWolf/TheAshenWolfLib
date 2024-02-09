@@ -1,8 +1,9 @@
 {
     "name": "TheAshenWolf",
+    "rootNamespace": "",
     "references": [
         "Unity.TextMeshPro",
-        "Zenject"
+        "DOTween.Modules"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
